@@ -5,25 +5,26 @@ import com.faunadb.client.FaunaClient;
 import static com.faunadb.client.query.Language.CreateIndex;
 import static com.faunadb.client.query.Language.*;
 
-/**
- * Hier muss ein Index erstellt werden, der alle Teilnehmer ausgibt
- */
-
-
 public class CreateIndexAll {
     public static void main(String[] args) throws Exception {
         //Create an admin connection to FaunaDB.
         FaunaClient adminClient =
                 FaunaClient.builder()
-                        .withSecret("dein key")
+                        .withSecret("fnAD6o9LvsACAY1P-jvYDMFDbyJkgM70tW2raItB")
                         .build();
 
 
 
 
         System.out.println(
-                //Hier die Query entwerfen
-                );
+                adminClient.query(
+                        CreateIndex(
+                                Obj(
+                                        "name", Value("alle_teilnehmer2"),
+                                        "source", Collection(Value("Teilnehmer_Java")),
+                                        "values", Arr(Obj("field", Arr(Value("data"),Value( "name"))))
+                                )))
+                        .get());
 
 
 
