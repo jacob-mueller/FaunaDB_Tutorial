@@ -5,16 +5,12 @@ import com.faunadb.client.FaunaClient;
 import static com.faunadb.client.query.Language.CreateIndex;
 import static com.faunadb.client.query.Language.*;
 
-/**
- * Hier muss ein Index erstellt werden, der Anhand des Vornamens den Nachnamen ausgibt
-
-**/
 public class CreateIndex {
     public static void main(String[] args) throws Exception {
         //Create an admin connection to FaunaDB.
         FaunaClient adminClient =
                 FaunaClient.builder()
-                        .withSecret("yourKey")
+                        .withSecret("fnAD6o9LvsACAY1P-jvYDMFDbyJkgM70tW2raItB")
                         .build();
 
 

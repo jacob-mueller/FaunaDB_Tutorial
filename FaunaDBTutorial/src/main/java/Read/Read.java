@@ -1,25 +1,23 @@
-package Create;
+package Read;
 
 import com.faunadb.client.FaunaClient;
 
 import static com.faunadb.client.query.Language.*;
 
-
-public class CreateCol {
-    public static void main(String[] args) throws Exception  {
+public class Read {
+    public static void main(String[] args) throws Exception {
         //Create an admin connection to FaunaDB.
         FaunaClient adminClient =
                 FaunaClient.builder()
-                        .withSecret("fnAD6o9LvsACAY1P-jvYDMFDbyJkgM70tW2raItB")
+                        .withSecret("Yourkey")
                         .build();
 
 
-
         System.out.println(
-                adminClient.query(CreateCollection(Obj("name", Value("Github_Projekte"))))
+                adminClient.query(Get(Ref(Collection("Teilnehmer"), Value("282195573338014209"))))
                         .get());
 
-        adminClient.close();
     }
-}
 
+
+}

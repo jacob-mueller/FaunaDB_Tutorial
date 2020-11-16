@@ -1,12 +1,12 @@
-package Create;
+package Connection;
 
 import com.faunadb.client.FaunaClient;
+import com.faunadb.client.query.Expr;
 
 import static com.faunadb.client.query.Language.*;
 
-
-public class CreateCol {
-    public static void main(String[] args) throws Exception  {
+public class CreateGitHubProjekt {
+    public static void main(String[] args) throws Exception {
         //Create an admin connection to FaunaDB.
         FaunaClient adminClient =
                 FaunaClient.builder()
@@ -14,12 +14,5 @@ public class CreateCol {
                         .build();
 
 
-
-        System.out.println(
-                adminClient.query(CreateCollection(Obj("name", Value("Github_Projekte"))))
-                        .get());
-
-        adminClient.close();
     }
 }
-
