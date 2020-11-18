@@ -1,11 +1,12 @@
-package Create;
+package Update;
 
 import com.faunadb.client.FaunaClient;
 
-import static com.faunadb.client.query.Language.CreateIndex;
 import static com.faunadb.client.query.Language.*;
+import static com.faunadb.client.query.Language.Value;
 
-public class CreateIndexAll {
+public class Update {
+
     public static void main(String[] args) throws Exception {
         //Create an admin connection to FaunaDB.
         FaunaClient adminClient =
@@ -13,20 +14,19 @@ public class CreateIndexAll {
                         .withSecret("fnAD68skKnACAQLyIybMoAx0CrXddm_-hrZRVecf")
                         .build();
 
-
-
-
         System.out.println(
                 adminClient.query(
-                        CreateIndex(
-                                Obj(
-                                        "name", Value("allTeilnehmer"),
-                                        "source", Collection(Value("Teilnehmer"))
-                                )))
-                        .get());
+                        Update(
+                                Ref(Collection("Teilnehmer"), Value("282543208430305799")),
+                                Obj("data",Obj("FavoriteDB",Value("SQLMicrosoft"))
+                                )
+                        )
+                ).get());
+
 
 
 
 
     }
 }
+

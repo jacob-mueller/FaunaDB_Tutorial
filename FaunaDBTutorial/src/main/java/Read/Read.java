@@ -1,11 +1,10 @@
-package Create;
+package Read;
 
 import com.faunadb.client.FaunaClient;
 
-import static com.faunadb.client.query.Language.CreateIndex;
 import static com.faunadb.client.query.Language.*;
 
-public class CreateIndexAll {
+public class Read {
     public static void main(String[] args) throws Exception {
         //Create an admin connection to FaunaDB.
         FaunaClient adminClient =
@@ -14,19 +13,11 @@ public class CreateIndexAll {
                         .build();
 
 
-
-
         System.out.println(
-                adminClient.query(
-                        CreateIndex(
-                                Obj(
-                                        "name", Value("allTeilnehmer"),
-                                        "source", Collection(Value("Teilnehmer"))
-                                )))
+                adminClient.query(Get(Ref(Collection("Teilnehmer"), Value("282543208430305799"))))
                         .get());
 
-
-
-
     }
+
+
 }
